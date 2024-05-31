@@ -1,17 +1,17 @@
 import React from "react";
+import Dice from "react-dice-roll";
 
-function Dice({ rollDice, value }) {
+const CustomDice = ({ onRoll }) => {
   return (
-    <div>
-      <button
-        onClick={rollDice}
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-      >
-        Roll Dice
-      </button>
-      <p>Dice Value: {value}</p>
+    <div className="flex justify-center">
+      <Dice
+        size={100}
+        onRoll={(value) => onRoll(value)}
+        faces={6}
+        rollingTime={1500}
+      />
     </div>
   );
-}
+};
 
-export default Dice;
+export default CustomDice;
