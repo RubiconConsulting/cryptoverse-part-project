@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import GameBoard from "./components/GameBoard";
+import { Route, Routes } from "react-router-dom";
+import GamePage from "./pages/GamePage";
+import LandingPage from "./pages/LandingPage";
 import "./index.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="text-3xl font-bold mb-4">Blockchain Monopoly</header>
-      <GameBoard />
+    <div>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/rubipoly" element={<GamePage />} />
+      </Routes>
     </div>
   );
 }
