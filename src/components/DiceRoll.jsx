@@ -11,17 +11,13 @@ const DiceRoll = ({ onRoll }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg">
-        <h2 className="text-xl font-bold mb-4">Roll the Dice</h2>
-        <Dice value={diceValue} />
-        <button
-          onClick={handleRoll}
-          className="mt-4 px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600"
-        >
-          Roll
-        </button>
-      </div>
+    <div className="text-black">
+      <button
+        onClick={handleRoll}
+        className="mt-4 px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600"
+      >
+        Roll
+      </button>
     </div>
   );
 };

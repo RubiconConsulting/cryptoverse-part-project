@@ -61,7 +61,6 @@ class Game {
     this.diceValue = 0;
   }
 
-  // Initialize game state
   initializeGame() {
     this.currentPlayerIndex = 0;
     this.diceValue = 0;
@@ -114,7 +113,9 @@ class Game {
 
   // Check game state
   checkGameState() {
-    return this.players.some((player) => player.balance <= 0);
+    return this.players.some(
+      (player) => player.currentPos === this.boxes.length - 1
+    );
   }
 }
 

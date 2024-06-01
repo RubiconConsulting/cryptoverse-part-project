@@ -31,7 +31,7 @@ const GamePage = () => {
     window.scrollTo(0, 0);
   });
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-indigo-900 text-white my-0">
+    <div className="min-h-screen h-full bg-gradient-to-b from-black to-indigo-900 text-white my-0">
       <div className="flex flex-col items-center justify-center h-full py-4">
         <h1 className="text-5xl font-bold mb-8 text-center">
           Into The Cryptoverse
@@ -41,7 +41,7 @@ const GamePage = () => {
           Cryptocurrency in a Fun & Interactive way
         </p>
 
-        <div className="my-4 w-full mx-auto h-screen">
+        <div className="my-4 w-full mx-auto h-full">
           {showGameBoard ? (
             <GameBoard />
           ) : (

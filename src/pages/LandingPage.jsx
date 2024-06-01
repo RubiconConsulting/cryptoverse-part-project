@@ -2,7 +2,6 @@ import React from "react";
 import hero_img from "../assets/hero-char.svg";
 import game_img from "../assets/OIG3.0j0fUOjKjX3hAUm 1.svg";
 import PlayNowButton from "../components/PlayNowBtn";
-import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {
@@ -10,8 +9,10 @@ const LandingPage = () => {
     <div className="min-h-screen bg-gradient-to-b from-black to-indigo-900 text-white my-0">
       <section className="sm:mx-0 mx-4 sm:flex sm:flex-row flex flex-col md:px-4 gap-12 justify-center items-center">
         <div className="flex flex-col sm:w-[50%] w-full">
-          <span className="text-6xl my-3">Into the Cryptoverse</span>
-          <span className="text-4xl my-2 text-gray-500">
+          <span className="sm:text-6xl text-4xl my-3">
+            Into the Cryptoverse
+          </span>
+          <span className="sm:text-4xl text-3xl my-2 text-gray-500">
             The most interactive educational game in Africa
           </span>
           <span className="text-2xl w-[70%] my-4">
@@ -60,8 +61,6 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };
