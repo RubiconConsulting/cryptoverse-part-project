@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import game_img from "../assets/OIG3.0j0fUOjKjX3hAUm 1.svg";
 import Navbar from "../components/Navbar";
 import { BsPlay } from "react-icons/bs";
@@ -27,6 +27,10 @@ const GameCard = ({ image, onClick }) => {
 
 const GamePage = () => {
   const [showGameBoard, setShowGameBoard] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-indigo-900 text-white my-0">
       <Navbar />
