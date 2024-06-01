@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../components/Navbar";
 import hero_img from "../assets/hero-char.svg";
 import game_img from "../assets/OIG3.0j0fUOjKjX3hAUm 1.svg";
 import PlayNowButton from "../components/PlayNowBtn";
@@ -9,8 +8,6 @@ import { Link } from "react-router-dom";
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-indigo-900 text-white my-0">
-      <Navbar />
-
       <section className="flex flex-wrap gap-12 justify-center items-center">
         <div className="flex flex-col w-[50%]">
           <span className="text-6xl my-3">Into the Cryptoverse</span>

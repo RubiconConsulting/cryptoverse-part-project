@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import CustomDice from "./Dice";
+// import CustomDice from "./Dice";
 Modal.setAppElement("#root");
 
 const customStyles = {
@@ -36,7 +36,7 @@ const DiceRoll = ({ isOpen, onClose, onDiceRoll }) => {
       contentLabel="Roll Dice"
     >
       <h2 className="text-2xl mb-4">Roll the Dice</h2>
-      <CustomDice onRoll={handleDiceRoll} />
+      {/* <CustomDice onRoll={handleDiceRoll} /> */}
       {/* {diceValue && <p className="mt-4 text-xl">You rolled a {diceValue}!</p>} */}
       {/* <button
         className="mt-6 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg"
@@ -73,11 +73,11 @@ const ParentDiceComponent = () => {
       >
         Roll Dice
       </button>
-      <DiceRoll
+      {/* <DiceRoll
         isOpen={isDiceRollOpen}
         onClose={closeDiceRoll}
         onDiceRoll={handleDiceRoll}
-      />
+      /> */}
       {rolledValue && <p>You rolled: {rolledValue}</p>}
     </div>
   );

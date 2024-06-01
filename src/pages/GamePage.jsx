@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import game_img from "../assets/OIG3.0j0fUOjKjX3hAUm 1.svg";
-import Navbar from "../components/Navbar";
 import { BsPlay } from "react-icons/bs";
 import GameBoard from "../components/GameBoard";
 
@@ -33,8 +32,7 @@ const GamePage = () => {
   });
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-indigo-900 text-white my-0">
-      <Navbar />
-      <div className="flex flex-col items-center justify-center h-full my-5">
+      <div className="flex flex-col items-center justify-center h-full py-4">
         <h1 className="text-5xl font-bold mb-8 text-center">
           Into The Cryptoverse
         </h1>

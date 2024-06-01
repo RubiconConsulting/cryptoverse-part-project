@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import image from "../assets/logo-white.svg";
 import { Link } from "react-router-dom";
 import { BsPerson } from "react-icons/bs";
 import { Button } from "./Button";
+import { toast } from "react-hot-toast";
 
 const truncateAddress = (address) => {
   if (!address) return "No Account";
@@ -19,7 +20,35 @@ export const toHex = (num) => {
 };
 
 const Navbar = () => {
-  const handleConnectWallet = () => {};
+  const [account, setAccount] = useState(null);
+  const connect = () => {
+    toast.success("Connecting Wallet ......", {
+      position: "top-center",
+    });
+    try {
+      window.ethereum
+        .request({
+          method: "eth_requestAccounts",
+        })
+        .then((address) => {
+          setAccount(address[0]);
+          localStorage.setItem("account", address[0]);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      toast.success("Wallet Connected", {
+        position: "top-center",
+      });
+    } catch (error) {
+      toast.error("something went wrong", {
+        position: "top-center",
+      });
+      toast.dismiss();
+      console.log(error);
+    }
+  };
   return (
     <nav className="flex justify-between items-center p-4 bg-indigo-900 text-white">
       <Link to="/">
@@ -29,8 +58,10 @@ const Navbar = () => {
       </Link>
       <div>
         <Button
-          onClick={handleConnectWallet}
-          placeholder={"w" !== "" ? `${truncateAddress("")}` : "Connect Wallet"}
+          onClick={connect}
+          placeholder={
+            account !== null ? `${truncateAddress(account)}` : "Connect Wallet"
+          }
           icon={<BsPerson />}
         />
       </div>
