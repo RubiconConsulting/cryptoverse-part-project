@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-indigo-900 text-white my-0">
-      <section className="flex flex-wrap gap-12 justify-center items-center">
-        <div className="flex flex-col w-[50%]">
+      <section className="sm:mx-0 mx-4 sm:flex sm:flex-row flex flex-col md:px-4 gap-12 justify-center items-center">
+        <div className="flex flex-col sm:w-[50%] w-full">
           <span className="text-6xl my-3">Into the Cryptoverse</span>
           <span className="text-4xl my-2 text-gray-500">
             The most interactive educational game in Africa
@@ -20,21 +20,25 @@ const LandingPage = () => {
           </span>
         </div>
         <div>
-          <img src={hero_img} alt="" className="w-[500px] h-[500px]" />
+          <img
+            src={hero_img}
+            alt=""
+            className="sm:w-[500px] sm:h-[500px] h-[300px] w-[300px]"
+          />
         </div>
       </section>
 
-      <section className="my-2  p-6 text-white rounded-lg shadow-md">
+      <section className="my-2 sm:mx-0 p-6 text-white rounded-lg shadow-md">
         <div></div>
-        <div className="flex items-center justify-between">
-          <div className="w-1/2">
+        <div className="sm:flex sm:flex-row flex-wrap items-center justify-between sm:my-auto my-2">
+          <div className="sm:w-1/2 w-full">
             <img
               src={game_img}
               alt="Game"
-              className="rounded-lg shadow-lg w-full h-auto"
+              className="rounded-lg shadow-lg w-full h-auto sm:w-auto w-full"
             />
           </div>
-          <div className="w-1/2 pl-6">
+          <div className="sm:w-1/2 w-full sm:pl-6">
             <h2 className="text-4xl font-bold mb-4 text-yellow-400">
               Cryptoverse
             </h2>

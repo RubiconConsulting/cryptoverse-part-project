@@ -1,8 +1,10 @@
 class PlayerModel {
-  constructor(name, balance, currentPos) {
+  constructor(name, isComputer = false) {
     this.name = name;
-    this.balance = balance;
-    this.currentPos = currentPos;
+    this.balance = 1000;
+    this.currentPos = 0;
+    this.isComputer = isComputer;
+    this.missedTurns = 0;
   }
 
   getBalance() {
@@ -12,65 +14,45 @@ class PlayerModel {
   rewardPlayer(amount) {
     this.balance += amount;
   }
+
+  penalizePlayer(amount) {
+    this.balance -= amount;
+  }
 }
 
 class Box {
-  constructor(name, type, questions) {
+  constructor(name, type) {
     this.name = name;
     this.type = type;
+  }
+}
+
+class QuestionBox extends Box {
+  constructor(name, questions) {
+    super(name, "question");
     this.questions = questions;
   }
 
   getQuestion() {
-    let len = this.questions.length - 1;
-    if (this.questions.length < 1) {
-      return null;
-    }
-
-    let randomNumber = Math.floor(Math.random() * len);
-
+    const len = this.questions.length;
+    if (len < 1) return null;
+    const randomNumber = Math.floor(Math.random() * len);
     return this.questions[randomNumber];
   }
 }
 
-class Place extends Box {
-  constructor(name, questions, owner = null) {
-    super(name, "place", questions);
-    this.questions = questions;
-    this.owner = owner;
-  }
-
-  getLengthOfQuestions() {
-    return this.questions.length - 1;
-  }
-
-  selectQuestion(questionNumber) {
-    if (0 < questionNumber >= this.getLengthOfQuestions()) {
-      return null;
-    }
-
-    return this.questions[questionNumber];
+class ChanceBox extends Box {
+  constructor(name) {
+    super(name, "chance");
   }
 }
 
-class Chance extends Box {
-  constructor(questions) {
-    super("Chance", "chance", questions);
+class TrapBox extends Box {
+  constructor(name) {
+    super(name, "trap");
   }
 }
 
-class Prison extends Box {
-  constructor(questions) {
-    super("Prison", "prison", questions);
-    this.prisoners = [];
-  }
-
-  prisonPlayers(player) {
-    this.prisoners.append(player);
-  }
-}
-
-// Main Game Object
 class Game {
   constructor(players, boxes) {
     this.players = players;
@@ -106,38 +88,21 @@ class Game {
   // Handle landing on a box
   handleLanding(player) {
     const box = this.boxes[player.currentPos];
-    if (box.type === "place") {
-      if (!box.owner) {
-        this.buyPlace(player, box);
-      } else if (box.owner !== player) {
-        const question = box.getQuestion();
-        this.askQuestion(player, question, box);
-      }
-    } else if (box.type === "chance" || box.type === "prison") {
+    if (box.type === "question") {
       const question = box.getQuestion();
       this.askQuestion(player, question, box);
+    } else if (box.type === "trap") {
+      player.missedTurns += 2;
     }
   }
 
   // Ask question and handle response
-  askQuestion(player, question, box) {
-    // Simulate asking a question and getting an answer (for now, randomize the result)
-    const correct = Math.random() < 0.5; // 50% chance of getting it right
+  askQuestion(player, question) {
+    const correct = Math.random() < 0.5; // Simulate 50% chance of getting it right
     if (correct) {
       player.rewardPlayer(question.reward);
     } else {
       player.penalizePlayer(question.penalty);
-      if (box.type === "prison") {
-        box.prisonPlayers(player);
-      }
-    }
-  }
-
-  // Buy place
-  buyPlace(player, box) {
-    if (!box.owner && player.balance >= box.price) {
-      player.balance -= box.price;
-      box.owner = player;
     }
   }
 
@@ -149,18 +114,8 @@ class Game {
 
   // Check game state
   checkGameState() {
-    // Example conditions to check if the game is over
-    const allPlacesOwned = this.boxes
-      .filter((box) => box.type === "place")
-      .every((box) => box.owner !== null);
-    const playerBankrupt = this.players.some((player) => player.balance <= 0);
-
-    if (allPlacesOwned || playerBankrupt) {
-      // Implement game over logic
-      return true;
-    }
-    return false;
+    return this.players.some((player) => player.balance <= 0);
   }
 }
 
-export { Prison, Place, PlayerModel, Chance };
+export { PlayerModel, QuestionBox, ChanceBox, TrapBox, Game };
