@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-indigo-900 text-white my-0">
-      <section className="sm:mx-0 mx-4 sm:flex sm:flex-row flex flex-col md:px-4 gap-12 justify-center items-center">
+      <section className="sm:mx-0 mx-4 sm:flex sm:flex-row flex flex-col md:px-4 gap-12 justify-center items-center mt-12">
         <div className="flex flex-col sm:w-[50%] w-full">
           <span className="sm:text-6xl text-4xl my-3">
             Into the Cryptoverse
@@ -36,7 +36,7 @@ const LandingPage = () => {
             <img
               src={game_img}
               alt="Game"
-              className="rounded-lg shadow-lg w-full h-auto sm:w-auto w-full"
+              className="rounded-lg shadow-lg  h-auto sm:w-auto w-full"
             />
           </div>
           <div className="sm:w-1/2 w-full sm:pl-6">

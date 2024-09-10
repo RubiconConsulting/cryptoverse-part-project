@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import DiceRoll from "./DiceRoll";
 import PlayerSelection from "./PlayerSelection";
-import { PlayerModel, Game } from "./Objects";
+import {  Game } from "./Objects";
 import boxes from "./Boxes";
 
 function GameBoard() {

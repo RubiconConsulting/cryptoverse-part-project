@@ -50,7 +50,7 @@ const Navbar = () => {
     }
   };
   return (
-    <nav className="flex justify-between items-center p-4 bg-indigo-900 text-white">
+    <nav className="flex justify-between items-center p-4 bg-indigo-900 text-white fixed top-0 right-0 left-0 z-40 border-y">
       <Link to="/">
         <div>
           <img src={image} alt="Logo" className="h-8" />
